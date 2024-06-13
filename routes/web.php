@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MapController;
@@ -21,7 +22,8 @@ use App\Http\Controllers\ApiController;
 |
 */
 
-Route::get('/', [MapController::class, 'index'])->name('index');
+Route::get('/', [LandingpageController::class, 'index'])->name('landingpage');
+Route::get('/map', [MapController::class, 'index'])->name('index');
 Route::get('/table', [MapController::class, 'table'])->name('table');
 //create point
 Route::post('/store-point', [PointController::class, 'store'])->name('store-point');
