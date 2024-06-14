@@ -33,12 +33,17 @@ Javascript
 
 PHP
 
+Laravel
+
 >Sumber data :
 
 Data Pribadi 
 
-Shapefile Kabupaten Sleman (Ina Geoportal)
+Shapefile Administrasi Provinsi DIY (Ina Geoportal)
 
+Data Sebaran Stasiun Hujan DAS Oyo
+
+CHIRPS (Climate Hazards Group InfraRed Precipitation with Station data)
 
 >Tangkapan layar komponen penting produk
 <img src="img/111.png" width="500">
