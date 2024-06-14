@@ -605,5 +605,51 @@ $.getJSON("{{ route('api.spi') }}", function(data) {
         }).addTo(map);
 
         // var layerControl = L.control.layers(null, overlayMaps).addTo(map);
+
+
+
+        // Watermark 2
+L.Control.Watermark2 = L.Control.extend({
+    onAdd: function (map) {
+        var container = L.DomUtil.create("div", "leaflet-control-watermark");
+        var img = L.DomUtil.create("img", "watermark-image");
+        img.src = '{{ asset('storage/marker/stat.png') }}';
+        img.style.width = "500px";
+        img.style.marginBottom = "5px";
+        container.appendChild(img);
+        return container;
+    },
+});
+
+L.control.watermark2 = function (opts) {
+    return new L.Control.Watermark2(opts);
+};
+
+L.control.watermark2({
+    position: "bottomleft"
+}).addTo(map);
+
+        // Watermark 1
+L.Control.Watermark1 = L.Control.extend({
+    onAdd: function (map) {
+        var container = L.DomUtil.create("div", "leaflet-control-watermark");
+        var img = L.DomUtil.create("img", "watermark-image");
+        img.src = '{{ asset('storage/marker/legend.png') }}';
+        img.style.width = "200px";
+        img.style.marginBottom = "5px";
+        container.appendChild(img);
+        return container;
+    },
+});
+
+L.control.watermark1 = function (opts) {
+    return new L.Control.Watermark1(opts);
+};
+
+L.control.watermark1({
+    position: "bottomleft"
+}).addTo(map);
+
+
     </script>
 @endsection
