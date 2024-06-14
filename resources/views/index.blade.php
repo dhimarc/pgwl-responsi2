@@ -158,7 +158,7 @@
 
     <script>
         // Map
-        var map = L.map('map').setView([-7.7956, 110.3695], 13);
+        var map = L.map('map').setView([-7.7956, 110.3695], 10);
 
         //Basemap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -292,65 +292,76 @@
         //         console.error('Error loading the GeoJSON file:', error);
         //     });
         /* GeoJSON Point */
-        var point = L.geoJson(null, {
-            onEachFeature: function(feature, layer) {
-                var popupContent = "Name: " + feature.properties.name + "<br>" +
-                    "Description: " + feature.properties.description + "<br>" +
-                    "Foto: <img src='{{ asset('storage/images/') }}/" + feature.properties.image +
-                    "' class='img-thumbnail' alt='...'>" + "<br>" +
+/* GeoJSON Point */
+/* GeoJSON Point */
+var point = L.geoJson(null, {
+    onEachFeature: function(feature, layer) {
+        var popupContent = "Name: " + feature.properties.name + "<br>" +
+            "Description: " + feature.properties.description + "<br>" +
+            "Foto: <img src='{{ asset('storage/images/') }}/" + feature.properties.image +
+            "' class='img-thumbnail' alt='...'>" + "<br>" +
 
-                    "<div class='d-flex flex-row mt-3'>" +
+            "<div class='d-flex flex-row mt-3'>" +
+            "<form action='{{ url('delete-point') }}/" + feature.properties.id + "' method='POST'>" +
+            '{{ csrf_field() }}' +
+            '{{ method_field('DELETE') }}' +
+            "<button type='submit' class='btn btn-danger' onClick='return confirm(\"Apakah ingin menghapus fitur ini?\")'><i class='fa-solid fa-trash-can'></i></button>" +
+            "</form>" +
+            "<a href='{{ url('edit-point') }}/" + feature.properties.id +
+            "' class='btn btn-warning'><i class='fa-solid fa-pen-to-square'></i></a>" +
+            "</div>";
 
-                    "<form action='{{ url('delete-point') }}/" + feature.properties.id + "' method='POST'>" +
-                    '{{ csrf_field() }}' +
-                    '{{ method_field('DELETE') }}' +
-                    "<button type='submit' class='btn btn-danger' onClick='return confirm(\"Apakah ingin menghapus fitur ini?\")'><i class='fa-solid fa-trash-can'></i></button>" +
-                    "</form>" +
-                    "<a href='{{ url('edit-point') }}/" + feature.properties.id +
-                    "' class='btn btn-warning'><i class='fa-solid fa-pen-to-square'></i></a>"
-                "</form>" +
-                "</div>";
-
-
-
-                layer.on({
-                    click: function(e) {
-                        layer.bindPopup(popupContent).openPopup();
-                    },
-                    mouseover: function(e) {
-                        layer.bindTooltip(feature.properties.kab_kota).openTooltip();
-                    },
-                });
+        layer.on({
+            click: function(e) {
+                layer.bindPopup(popupContent).openPopup();
+            },
+            mouseover: function(e) {
+                layer.bindTooltip(feature.properties.kab_kota).openTooltip();
             },
         });
+    },
+    pointToLayer: function(feature, latlng) {
+        // Define custom icon
+        var customIcon = L.icon({
+            iconUrl: '{{ asset('storage/marker/marker.png') }}', // Use the image from feature properties
+            iconSize: [32, 32], // size of the icon
+            iconAnchor: [16, 32], // point of the icon which will correspond to marker's location
+            popupAnchor: [0, -32] // point from which the popup should open relative to the iconAnchor
+        });
+        // Return a marker with the custom icon
+        return L.marker(latlng, { icon: customIcon });
+    }
+});
+
+
 
         $.getJSON("{{ route('api.points') }}", function(data) {
             point.addData(data);
             map.addLayer(point);
         });
-        /* GeoJSON Point */
-        var stasiun = L.geoJson(null, {
-            onEachFeature: function(feature, layer) {
-                var popupContent = "Name: " + feature.properties.lokasi + "<br>" ;
+        // /* GeoJSON Point */
+        // var stasiun = L.geoJson(null, {
+        //     onEachFeature: function(feature, layer) {
+        //         var popupContent = "Name: " + feature.properties.lokasi + "<br>" ;
 
 
 
 
-                layer.on({
-                    click: function(e) {
-                        layer.bindPopup(popupContent).openPopup();
-                    },
-                    mouseover: function(e) {
-                        layer.bindTooltip(feature.properties.lokasi).openTooltip();
-                    },
-                });
-            },
-        });
+        //         layer.on({
+        //             click: function(e) {
+        //                 layer.bindPopup(popupContent).openPopup();
+        //             },
+        //             mouseover: function(e) {
+        //                 layer.bindTooltip(feature.properties.lokasi).openTooltip();
+        //             },
+        //         });
+        //     },
+        // });
 
-        $.getJSON("{{ route('api.stasiun') }}", function(data) {
-            stasiun.addData(data);
-            map.addLayer(stasiun);
-        });
+        // $.getJSON("{{ route('api.stasiun') }}", function(data) {
+        //     stasiun.addData(data);
+        //     map.addLayer(stasiun);
+        // });
 
 
         /* GeoJSON Polyline */
@@ -581,12 +592,12 @@ $.getJSON("{{ route('api.spi') }}", function(data) {
 
         };
         var overlayMaps = {
-            "Point": point,
+            "Stasiun Hujan": point,
             "Polyline": polyline,
-            "Polygon": polygon,
+            "DAS Oyo": polygon,
             // "Jogja": Jogja,
-            "IDW": idw,
-            // "SPI": spi,
+            "Daerah Curah Hujan (Isohyete)": idw,
+            // "SPI": spi
         };
 
         var layerControl = L.control.layers(baseMaps, overlayMaps, {

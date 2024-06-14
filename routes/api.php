@@ -36,4 +36,5 @@ Route::get('/polygon', [PolygonController::class, 'index'])->name('api.polygons'
 Route::get('/polygon/{id}', [PolygonController::class, 'show'])->name('api.polygon');
 route::get('/api/idw', [ApiController::class, 'fetchData'])->name('api.idw');
 route::get('/api/spi', [ApiController::class, 'fetchSPI'])->name('api.spi');
+route::get('/api/spis', [ApiController::class, 'fetchSPIS'])->name('api.spis');
 route::get('/api/stasiun', [ApiController::class, 'fetchStasiun'])->name('api.stasiun');
