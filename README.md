@@ -1,51 +1,44 @@
+# Informasi Produk
 
->User identity
+**Nama:** Dhimar Fadhilansyah Darojat  
+**NIM:** 22/493570/SV/20710  
+**Kelas:** PGWL-A  
 
-Nama: Dhimar Fadhilansyah Darojat
+---
 
-NIM: 22/493570/SV/20710
+## DASOY-HIS (DAS Oyo-Hydrological Information System)
 
-Kelas: PGWL-A
+DASOY-HIS adalah sebuah aplikasi WEB GIS (Geographic Information System) berbasis website yang memfasilitasi visualisasi, analisis, dan berbagi data geografis terkait dengan hidrologi. Produk ini dikembangkan untuk fokus pada analisis stasiun hujan Daerah Aliran Sungai Oyo (DAS Oyo) dan nilai presipitasi di Provinsi Daerah Istimewa Yogyakarta (DIY).
 
->Nama produk 
-DASOY-HIS (DAS Oyo-Hydrological Information System)
+---
 
->Deskripsi produk : 
+## Komponen Pembangun Produk
 
- WEB GIS (Geographic Information System) adalah website berbasis Sistem Informasi Geografis yang diakses melalui web browser dan digunakan untuk memvisualisasikan, menganalisis, dan berbagi data geografis yang terkait dengan suatu wilayah atau lokasi tertentu.
-WEB GIS yang dibuat dalam proyek kali ini menampilkan tema hidrologi dengan berfokus pada ananalisis stasiun hujan Daerah Aliran Sungai Oyo, serta analisis nilai presipitasi pada Provinsi DIY. 
-								
->Komponen pembangun produk :
+- Leaflet.JS
+- Bootstrap
+- HTML
+- CSS
+- GeoServer
+- PhpMyAdmin
+- JavaScript
+- PHP
+- Laravel
 
-Leaflet.JS
+---
 
-Bootstrap
+## Sumber Data
 
-HTML
+- Data Pribadi
+- Shapefile Administrasi Provinsi DIY (diperoleh dari Ina Geoportal)
+- Data Sebaran Stasiun Hujan DAS Oyo
+- CHIRPS (Climate Hazards Group InfraRed Precipitation with Station data)
 
-CSS
+---
 
-GeoServer
+## Tangkapan Layar Komponen Penting Produk
 
-PhpMyAdmin 
+![Tangkapan Layar 1](img/111.png)
+![Tangkapan Layar 2](img/3.png)
+![Tangkapan Layar 3](img/5.png)
 
-Javascript
-
-PHP
-
-Laravel
-
->Sumber data :
-
-Data Pribadi 
-
-Shapefile Administrasi Provinsi DIY (Ina Geoportal)
-
-Data Sebaran Stasiun Hujan DAS Oyo
-
-CHIRPS (Climate Hazards Group InfraRed Precipitation with Station data)
-
->Tangkapan layar komponen penting produk
-<img src="img/111.png" width="500">
-<img src="img/3.png" width="500">
-<img src="img/5.png" width="500">
+---
