@@ -49,5 +49,3 @@ CHIRPS (Climate Hazards Group InfraRed Precipitation with Station data)
 <img src="img/111.png" width="500">
 <img src="img/3.png" width="500">
 <img src="img/5.png" width="500">
-<img src="img/6.png" width="500">
-<img src="img/7.png" width="500">
