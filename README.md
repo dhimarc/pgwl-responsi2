@@ -31,7 +31,7 @@ DASOY-HIS adalah sebuah aplikasi WEB GIS (Geographic Information System) berbasi
 - Data Pribadi
 - Shapefile Administrasi Provinsi DIY (diperoleh dari Ina Geoportal)
 - Data Sebaran Stasiun Hujan DAS Oyo
-- CHIRPS (Climate Hazards Group InfraRed Precipitation with Station data)
+- Citra CHIRPS (Climate Hazards Group InfraRed Precipitation with Station data) Tahun 2024
 
 ---
 
