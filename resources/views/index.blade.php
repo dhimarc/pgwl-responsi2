@@ -606,6 +606,26 @@ $.getJSON("{{ route('api.spi') }}", function(data) {
 
         // var layerControl = L.control.layers(null, overlayMaps).addTo(map);
 
+          // Watermark 1
+L.Control.Watermark0 = L.Control.extend({
+    onAdd: function (map) {
+        var container = L.DomUtil.create("div", "leaflet-control-watermark");
+        var img = L.DomUtil.create("img", "watermark-image");
+        img.src = '{{ asset('storage/marker/legend2.png') }}';
+        img.style.width = "100px";
+        img.style.marginBottom = "5px";
+        container.appendChild(img);
+        return container;
+    },
+});
+
+L.control.watermark0 = function (opts) {
+    return new L.Control.Watermark0(opts);
+};
+
+L.control.watermark0({
+    position: "bottomleft"
+}).addTo(map);
 
 
         // Watermark 2
@@ -635,7 +655,7 @@ L.Control.Watermark1 = L.Control.extend({
         var container = L.DomUtil.create("div", "leaflet-control-watermark");
         var img = L.DomUtil.create("img", "watermark-image");
         img.src = '{{ asset('storage/marker/legend.png') }}';
-        img.style.width = "200px";
+        img.style.width = "160px";
         img.style.marginBottom = "5px";
         container.appendChild(img);
         return container;
